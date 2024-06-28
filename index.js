@@ -1,24 +1,56 @@
 'use strict';
 
-if (!hexo.config.i18n) {
-    hexo.log.info('generator_plus not config in _config.yml, use default config!\n \
-        Please visit https://github.com/kiwirafe/hexo-generator-plus for more information');
-    hexo.config.generator_plus = {
-        generator: ["index", "archive", "category", "tag"]
-    }
-}
+hexo.config.generator_plus = Object.assign({
+    generator: ["index", "archive", "category", "tag"],
+    pagination_dir: hexo.config.pagination_dir || "pages",
+}, hexo.config.generator_plus);
 
-hexo.extend.generator.register('get_posts', require('./lib/helper'));
-hexo.extend.generator.register('get_categories', require('./lib/helper'));
-hexo.extend.generator.register('get_tags', require('./lib/helper'));
+const config = hexo.config.generator_plus;
+config.language = config.language || [].concat(hexo.config.language || 'default');
+// This ensures the result is always an array. 
 
-var generator = hexo.config.generator_plus.generator;
-if (generator) {
-    if (!Array.isArray(generator)) {
-        generator = [generator];
+//Helpers
+var helpers = require('./lib/helpers');
+hexo.extend.helper.register('get_posts', helpers.get_posts);
+hexo.extend.helper.register('get_categories', helpers.get_categories);
+hexo.extend.helper.register('get_tags', helpers.get_tags);
+
+//Generators
+config.index_generator = Object.assign({
+    per_page: hexo.config.per_page || 10,
+    order_by: '-date'
+}, hexo.config.index_generator);
+
+config.archive_generator = Object.assign({
+    per_page: hexo.config.per_page || 10,
+    order_by: '-date',
+    yearly: true,
+    monthly: true,
+    daily: false
+}, hexo.config.archive_generator);
+
+config.category_generator = Object.assign({
+    per_page: hexo.config.per_page || 10,
+    order_by: '-date',
+    enable_index_page: false
+}, hexo.config.category_generator);
+
+config.tag_generator = Object.assign({
+    per_page: hexo.config.per_page || 10,
+    order_by: '-date',
+    enable_index_page: false
+}, hexo.config.tag_generator);
+
+var generator = require('./lib/generators');
+var gconfig = config.generator;
+
+if (gconfig) {
+    if (!Array.isArray(gconfig)) {
+        gconfig = [gconfig];
     }
-    hexo.config.i18n.generator = generator;
-    generator.forEach(function(item) {
-        hexo.extend.generator.register(`${item}_generator`, require(`./lib/${item}generator`));
+    config.generator = gconfig;
+
+    gconfig.forEach(function(item) {
+        hexo.extend.generator.register(`${item}_generator`, generator[`${item}_generator`]);
     });
 }
