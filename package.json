@@ -1,0 +1,22 @@
+{
+    "name": "hexo-generator-plus",
+    "version": "0.1.0",
+    "main": "index",
+    "description": "A generator for Hexo.",
+    "repository": "kiwirafe/hexo-generator-plus",
+    "directories": {
+        "lib": "./lib"
+    },
+    "files": [
+        "index.js",
+        "lib/"
+    ],
+    "keywords": [
+        "hexo",
+        "generator",
+        "i18n"
+    ],
+    "dependencies": {
+        "hexo-pagination": "3.0.0"
+    }
+}
