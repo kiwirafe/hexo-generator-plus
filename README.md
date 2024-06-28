@@ -1,5 +1,7 @@
 # hexo-generator-plus
 
+#### [中文文档](README_zh.md)
+
 A package that generates index, archive, categories and tags pages for [Hexo](https://hexo.io/). It supports i18n and index pages for categories and tags.
 
 ## Installation
@@ -27,13 +29,13 @@ sources/
 
 ### Help Functions
 #### `get_posts()`
-Return all posts written in current language.
+Returns all posts written in current language.
 
 #### `get_categories()`
-Return all categories that contain at least a post in current language.
+Returns all categories that contain at least a post in current language.
 
 #### `get_tags()`
-Return all tags that contain at least one post in current language.
+Returns all tags that contain at least one post in current language.
 
 Note: The current language refers to the language of the page from which the function is called
 
