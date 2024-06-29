@@ -1,6 +1,6 @@
 {
   "name": "hexo-generator-plus",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "kiwirafe <kiwirafe@gmail.com>",
   "main": "index",
   "description": "A package that generates index, archive, categories and tags pages for Hexo",

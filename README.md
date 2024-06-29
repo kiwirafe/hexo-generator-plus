@@ -28,7 +28,7 @@ sources/
 2. Add the following to _config.yml:
 ```yml
 generator_plus:
-  language: ['lang1', 'lang2']
+  language: ['first language', 'second language']
 ```
 3. Change `new_post_name` variable in _config.yml to `new_post_name: :lang/:title.md`
 4. (Optional, but recommended) Change `permalink` variable in _config.yml `permalink: :lang/{what was here before}`
