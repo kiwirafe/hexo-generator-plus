@@ -31,9 +31,11 @@ generator_plus:
   language: ['first language', 'second language']
 ```
 3. Change `new_post_name` variable in _config.yml to `new_post_name: :lang/:title.md`
-4. (Optional, but recommended) Change `permalink` variable in _config.yml `permalink: :lang/{what was here before}`
+4. Change `permalink` variable in _config.yml `permalink: :lang/{what was here before}`
 
 ## Helpers
+**`url_for_lang()`** returns a proper i18n url. You should only use this for categories and tags, but not for posts. 
+
 **`get_posts()`** returns all posts written in current language.
 
 **`get_categories()`** returns all categories that contain at least a post in current language.

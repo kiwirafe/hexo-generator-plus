@@ -32,14 +32,13 @@ generator_plus:
 4. 将 _config.yml 中的 `permalink` 变量更改为 `permalink: :lang/{这里原来的内容}`
 
 ### 辅助函数
-#### `get_posts()`
-返回当前语言的所有文章。
+**`url_for_lang()`** 返回一个国际化URL。你应该只在调用分类和标签的情况下使用它，但不要在调用文章的时候使用它。
 
-#### `get_categories()`
-返回包含至少一个当前语言文章的所有分类。
+**`get_posts()`** 返回当前语言的所有文章。
 
-#### `get_tags()`
-返回包含至少一个当前语言文章的所有标签。
+**`get_categories()`** 返回包含至少一个当前语言文章的所有分类。
+
+**`get_tags()`** 返回包含至少一个当前语言文章的所有标签。
 
 注意：当前语言是指调用该函数的页面的语言。
 
@@ -48,7 +47,8 @@ generator_plus:
 
 ``` yaml
 generator_plus:
-  languages: 
+  language: 'default'
+  pagination_dir: 'page'
   generators: ["index", "archive", "category", "tag"]
 
   index_generator:

@@ -11,6 +11,7 @@ config.language = config.language || [].concat(hexo.config.language || 'default'
 
 //Helpers
 var helpers = require('./lib/helpers');
+hexo.extend.helper.register('url_for_lang', helpers.url_for_lang);
 hexo.extend.helper.register('get_posts', helpers.get_posts);
 hexo.extend.helper.register('get_categories', helpers.get_categories);
 hexo.extend.helper.register('get_tags', helpers.get_tags);
@@ -19,7 +20,7 @@ hexo.extend.helper.register('get_tags', helpers.get_tags);
 config.index_generator = Object.assign({
     per_page: hexo.config.per_page || 10,
     order_by: '-date'
-}, hexo.config.index_generator);
+}, config.index_generator);
 
 config.archive_generator = Object.assign({
     per_page: hexo.config.per_page || 10,
@@ -27,19 +28,19 @@ config.archive_generator = Object.assign({
     yearly: true,
     monthly: true,
     daily: false
-}, hexo.config.archive_generator);
+}, config.archive_generator);
 
 config.category_generator = Object.assign({
     per_page: hexo.config.per_page || 10,
     order_by: '-date',
     enable_index_page: false
-}, hexo.config.category_generator);
+}, config.category_generator);
 
 config.tag_generator = Object.assign({
     per_page: hexo.config.per_page || 10,
     order_by: '-date',
     enable_index_page: false
-}, hexo.config.tag_generator);
+}, config.tag_generator);
 
 var generator = require('./lib/generators');
 var gconfig = config.generator;
