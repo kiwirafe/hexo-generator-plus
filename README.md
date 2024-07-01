@@ -1,8 +1,13 @@
 # hexo-generator-plus
 
+### A Hexo plugin that generates index, archive, category and tag pages.
+
 #### [中文文档](README_zh.md)
 
-A package that generates index, archive, categories and tags pages for [Hexo](https://hexo.io/). It supports i18n and index pages for categories and tags.
+This plugin supports all the functionalities of the original Hexo generators (index, archive, category and tag generators). Additionally, it offers two extra features:
+1. **i18n (Internationalization):** It generates separate pages for each language.
+2. **Category and Tag Index Pages:** It creates index pages for categories and tags.
+
 
 ## Installation
 ```bash
